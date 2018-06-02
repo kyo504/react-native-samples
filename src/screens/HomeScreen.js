@@ -2,13 +2,43 @@
  * @flow
  */
 import React from 'react';
-import { View, Text, Button, TouchableHighlight, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, Button, TouchableHighlight, StyleSheet } from 'react-native';
+
+const list = [
+  // Day 2
+  'FlexDirectionBasics',
+  'FlexWrapBasics',
+  'JustifyContentBasics',
+  'AlignContentBasics',
+  'AlignItemsBasics',
+  'FlexBasics',
+  'FlexBasics2',
+  'FlexAdvanced',
+  'AlignSelfBasics',
+  'ViewBasics',
+  'TextInputBasics',
+  'TouchableBasics',
+  'ScrollViewBasics',
+];
 
 export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>ReactNativeSamples template</Text>
+        <ScrollView>
+          {list.map(routeName => {
+            return (
+              <TouchableHighlight
+                key={routeName}
+                style={styles.item}
+                underlayColor="lightgray"
+                onPress={() => this.props.navigation.navigate(routeName)}
+              >
+                <Text>{routeName}</Text>
+              </TouchableHighlight>
+            );
+          })}
+        </ScrollView>
       </View>
     );
   }
@@ -17,10 +47,12 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  text: {
-    fontSize: 20,
-  }
+  item: {
+    height: 48,
+    justifyContent: 'center',
+    borderBottomColor: 'black',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    padding: 5,
+  },
 });
