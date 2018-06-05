@@ -5,21 +5,23 @@ import React from 'react';
 import {
   View,
   TouchableHighlight,
+  TouchableNativeFeedback,
+  TouchableOpacity,
   StyleSheet,
-  SwipeableFlatList,
   KeyboardAvoidingView,
-} from 'react-native';
-import {
+  FlatList,
   TextInput,
   Text,
   Button,
-  RadioButtonGroup,
-  RadioButton,
-  Checkbox,
-} from 'react-native-paper';
-const uuid = require('uuid/v1');
+  Platform,
+} from 'react-native';
+import uuid from 'uuid/v1';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { SafeAreaView } from 'react-navigation';
 
-export default class HomeScreen extends React.Component {
+const TouchableElement = Platform.OS === 'ios' ? TouchableHighlight : TouchableNativeFeedback;
+
+export default class TodoApp extends React.Component {
   static navigationOptions = {
     title: 'Todo App',
   };
@@ -54,7 +56,7 @@ export default class HomeScreen extends React.Component {
         }),
       },
       () => {
-        this.listRef._flatListRef.scrollToEnd();
+        this.listRef.scrollToEnd();
       }
     );
   };
@@ -88,56 +90,75 @@ export default class HomeScreen extends React.Component {
     });
   };
 
-  renderTodo = ({ item, index }) => {
-    const backgroundColor = index % 2 === 1 ? 'lightgray' : 'white';
+  renderRow = ({ item, index }) => {
+    const iconName = item.completed ? 'checkbox-marked-circle' : 'checkbox-blank-circle-outline';
     return (
-      <View style={[styles.rowContainer, { backgroundColor }]}>
-        <Checkbox checked={item.completed} onPress={() => this.onChangeStatus(item.key)} />
-        <Text style={{ marginLeft: 10 }}>{item.title}</Text>
+      <View style={styles.rowContainer}>
+        <TouchableOpacity onPress={() => this.onChangeStatus(item.key)}>
+          <Icon name={iconName} size={20} />
+        </TouchableOpacity>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text onPress={() => this.onRemoveTodo(item.key)}>삭제</Text>
       </View>
     );
   };
 
-  renderQuickActions = ({ item }: Object) => {
-    return (
-      <View style={styles.actionsContainer}>
-        <TouchableHighlight
-          style={[styles.actionButton, styles.actionButtonDestructive]}
-          onPress={() => this.onRemoveTodo(item.key)}
-        >
-          <Text style={styles.actionButtonText}>Remove</Text>
-        </TouchableHighlight>
-      </View>
-    );
+  renderSeperator = ({ item }) => {
+    return <View style={styles.seperator} />;
   };
+
+  renderList() {
+    const { todos, status } = this.state;
+    const filteredTodos = todos.filter(
+      todo =>
+        status === 'all' ||
+        (status === 'completed' && todo.completed) ||
+        (status === 'active') === !todo.completed
+    );
+
+    // Workaround before 0.56.x
+    if (filteredTodos.length === 0) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text>There are no todos</Text>
+        </View>
+      );
+    }
+
+    return (
+      <FlatList
+        ref={c => {
+          this.listRef = c;
+        }}
+        keyExtractor={todo => todo.key}
+        data={filteredTodos}
+        renderItem={this.renderRow}
+        ItemSeparatorComponent={this.renderSeperator}
+        ListEmptyComponent={this.renderEmpty}
+      />
+    );
+  }
 
   render() {
     const { title, status, todos } = this.state;
 
-    console.log(todos);
     return (
-      <KeyboardAvoidingView style={styles.container} behavior="padding" keyboardVerticalOffset={84}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 10 }}>
-          <TextInput
-            style={{ flex: 1, marginHorizontal: 10 }}
-            value={title}
-            onChangeText={text => this.setState({ title: text })}
-            placeholder="Add a new task"
-          />
-          <Button primary raised onPress={() => this.onAddTodo(title)}>
-            Add
-          </Button>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            padding: 10,
-            borderBottomColor: 'lightgray',
-            borderBottomWidth: StyleSheet.hairlineWidth,
-          }}
+      <SafeAreaView style={{ flex: 1 }} forceInset={{ top: 'never', bottom: 'always' }}>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
+          keyboardVerticalOffset={85}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              value={title}
+              onChangeText={text => this.setState({ title: text })}
+              placeholder="Add a new task"
+            />
+            <Button onPress={() => this.onAddTodo(title)} title="Add" />
+          </View>
+          <View style={styles.statusGroup}>
             <Text
               style={{ fontWeight: status === 'all' ? 'bold' : 'normal', marginHorizontal: 10 }}
               onPress={() => this.setState({ status: 'all' })}
@@ -160,23 +181,9 @@ export default class HomeScreen extends React.Component {
               Active
             </Text>
           </View>
-        </View>
-        <SwipeableFlatList
-          ref={c => {
-            this.listRef = c;
-          }}
-          style={{ flex: 1 }}
-          data={todos.filter(
-            todo =>
-              status === 'all' ||
-              (status === 'completed' && todo.completed) ||
-              (status === 'active') === !todo.completed
-          )}
-          maxSwipeDistance={80}
-          renderItem={this.renderTodo}
-          renderQuickActions={this.renderQuickActions}
-        />
-      </KeyboardAvoidingView>
+          {this.renderList()}
+        </KeyboardAvoidingView>
+      </SafeAreaView>
     );
   }
 }
@@ -185,8 +192,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+  },
+  input: {
+    flex: 1,
+    fontSize: 20,
+    marginHorizontal: 10,
+    borderBottomColor: 'gray',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
   text: {
     fontSize: 20,
+  },
+  title: {
+    flex: 1,
+    marginLeft: 10,
   },
   rowContainer: {
     flex: 1,
@@ -197,23 +220,16 @@ const styles = StyleSheet.create({
     borderBottomColor: 'lightgray',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  actionsContainer: {
-    flex: 1,
+  statusGroup: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    height: 60,
-  },
-  actionButton: {
     padding: 10,
-    width: 80,
-    backgroundColor: '#999999',
+    borderBottomColor: 'lightgray',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  actionButtonDestructive: {
-    backgroundColor: '#FF0000',
-  },
-  actionButtonText: {
-    textAlign: 'center',
-    color: 'white',
+  seperator: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: 'gray',
   },
 });

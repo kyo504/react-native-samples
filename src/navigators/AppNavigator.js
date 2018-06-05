@@ -19,6 +19,10 @@ import TextInputBasics from '../screens/TextInputBasics';
 import TouchableBasics from '../screens/TouchableBasics';
 import ScrollViewBasics from '../screens/ScrollViewBasics';
 import TodoApp from '../screens/TodoApp';
+import TodoApp2 from '../screens/TodoApp2';
+import FlatListBasics from '../screens/FlatListBasics';
+import SectionListBasics from '../screens/SectionListBasics';
+import ImageBasics from '../screens/ImageBasics';
 
 export default StackNavigator(
   {
@@ -116,6 +120,30 @@ export default StackNavigator(
       screen: TodoApp,
       navigationOptions: {
         headerTitle: 'TodoApp',
+      },
+    },
+    TodoApp2: {
+      screen: TodoApp2,
+      navigationOptions: {
+        headerTitle: 'TodoApp2',
+      },
+    },
+    FlatListBasics: {
+      screen: FlatListBasics,
+      navigationOptions: {
+        headerTitle: 'FlatListBasics',
+      },
+    },
+    ImageBasics: {
+      screen: ImageBasics,
+      navigationOptions: {
+        headerTitle: 'ImageBasics',
+      },
+    },
+    SectionListBasics: {
+      screen: SectionListBasics,
+      navigationOptions: {
+        headerTitle: 'SectionListBasics',
       },
     },
   },

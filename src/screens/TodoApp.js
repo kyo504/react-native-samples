@@ -21,7 +21,7 @@ import { SafeAreaView } from 'react-navigation';
 
 const TouchableElement = Platform.OS === 'ios' ? TouchableHighlight : TouchableNativeFeedback;
 
-export default class HomeScreen extends React.Component {
+export default class TodoApp extends React.Component {
   static navigationOptions = {
     title: 'Todo App',
   };
