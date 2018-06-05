@@ -18,6 +18,7 @@ import TextBasics from '../screens/TextBasics';
 import TextInputBasics from '../screens/TextInputBasics';
 import TouchableBasics from '../screens/TouchableBasics';
 import ScrollViewBasics from '../screens/ScrollViewBasics';
+import TodoApp from '../screens/TodoApp';
 
 export default StackNavigator(
   {
@@ -109,6 +110,12 @@ export default StackNavigator(
       screen: ScrollViewBasics,
       navigationOptions: {
         headerTitle: 'ScrollViewBasics',
+      },
+    },
+    TodoApp: {
+      screen: TodoApp,
+      navigationOptions: {
+        headerTitle: 'TodoApp',
       },
     },
   },
