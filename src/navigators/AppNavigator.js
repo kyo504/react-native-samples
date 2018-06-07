@@ -23,6 +23,7 @@ import TodoApp2 from '../screens/TodoApp2';
 import FlatListBasics from '../screens/FlatListBasics';
 import SectionListBasics from '../screens/SectionListBasics';
 import ImageBasics from '../screens/ImageBasics';
+import AsyncStorageBasics from '../screens/AsyncStorageBasics';
 
 export default StackNavigator(
   {
@@ -144,6 +145,12 @@ export default StackNavigator(
       screen: SectionListBasics,
       navigationOptions: {
         headerTitle: 'SectionListBasics',
+      },
+    },
+    AsyncStorageBasics: {
+      screen: AsyncStorageBasics,
+      navigationOptions: {
+        headerTitle: 'AsyncStorageBasics',
       },
     },
   },
