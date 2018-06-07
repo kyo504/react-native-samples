@@ -63,13 +63,10 @@ export default class TodoApp extends React.Component {
    */
   async loadData() {
     try {
-      const todos = [];
       const keys = await AsyncStorage.getAllKeys();
-
-      for (const key of keys) {
-        const item = await AsyncStorage.getItem(key);
-        todos.push(JSON.parse(item));
-      }
+      const result = await AsyncStorage.multiGet(keys);
+      const todos = result.map(todo => JSON.parse(todo[1]));
+      console.log(todos);
 
       this.setState({ todos });
     } catch (e) {
