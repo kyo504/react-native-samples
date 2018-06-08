@@ -25,6 +25,7 @@ import SectionListBasics from '../screens/SectionListBasics';
 import ImageBasics from '../screens/ImageBasics';
 import AsyncStorageBasics from '../screens/AsyncStorageBasics';
 import DimensionsBasis from '../screens/DimensionsBasics';
+import ModalBasics from '../screens/ModalBasics';
 
 export default StackNavigator(
   {
@@ -158,6 +159,12 @@ export default StackNavigator(
       screen: DimensionsBasis,
       navigationOptions: {
         headerTitle: 'DimensionsBasis',
+      },
+    },
+    ModalBasics: {
+      screen: ModalBasics,
+      navigationOptions: {
+        headerTitle: 'ModalBasics',
       },
     },
   },
