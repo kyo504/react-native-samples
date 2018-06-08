@@ -25,6 +25,7 @@ const list = [
   'SectionListBasics',
   'ImageBasics',
   'AsyncStorageBasics',
+  'DimensionsBasis',
 ];
 
 export default class HomeScreen extends React.Component {
