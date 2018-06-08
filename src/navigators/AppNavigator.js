@@ -27,6 +27,7 @@ import AsyncStorageBasics from '../screens/AsyncStorageBasics';
 import DimensionsBasis from '../screens/DimensionsBasics';
 import ModalBasics from '../screens/ModalBasics';
 import AppStateExample from '../screens/AppStateExample';
+import NetInfoExample from '../screens/NetInfoExample';
 
 export default StackNavigator(
   {
@@ -172,6 +173,12 @@ export default StackNavigator(
       screen: AppStateExample,
       navigationOptions: {
         headerTitle: 'AppStateExample',
+      },
+    },
+    NetInfoExample: {
+      screen: NetInfoExample,
+      navigationOptions: {
+        headerTitle: 'NetInfoExample',
       },
     },
   },
