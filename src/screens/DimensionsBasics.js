@@ -30,12 +30,12 @@ export default class DimensionsBasics extends Component {
     return (
       <SafeAreaView style={{ flex: 1 }} forceInset={{ top: 'never', bottom: 'always' }}>
         <View>
-          <Text style={{ fontWeight: 'bold', marginVertical: 10 }}>Dimensinos for Window</Text>
+          <Text style={{ fontWeight: 'bold', marginVertical: 10 }}>Dimensions for Window</Text>
           <Text>Width: {window.width}</Text>
           <Text>Height: {window.height}</Text>
           <Text>FontScale: {window.fontScale}</Text>
           <Text>Scale: {window.scale}</Text>
-          <Text style={{ fontWeight: 'bold', marginVertical: 10 }}>Dimensinos for Screen</Text>
+          <Text style={{ fontWeight: 'bold', marginVertical: 10 }}>Dimensions for Screen</Text>
           <Text>Width: {screen.width}</Text>
           <Text>Height: {screen.height}</Text>
           <Text>FontScale: {screen.fontScale}</Text>
