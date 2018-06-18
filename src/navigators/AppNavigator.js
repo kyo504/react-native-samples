@@ -29,6 +29,7 @@ import ModalBasics from '../screens/ModalBasics';
 import AppStateExample from '../screens/AppStateExample';
 import NetInfoExample from '../screens/NetInfoExample';
 import GalleryNavigator from './GalleryNavigator';
+import CounterExample from '../screens/CounterExample';
 
 export default StackNavigator(
   {
@@ -187,6 +188,9 @@ export default StackNavigator(
       navigationOptions: {
         header: null,
       },
+    },
+    Counter: {
+      screen: CounterExample,
     },
   },
   {
