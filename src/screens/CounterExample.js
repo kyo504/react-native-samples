@@ -15,8 +15,8 @@ export default class CounterExample extends Component {
     return (
       <Counter
         value={this.state.value}
-        onIncrement={() => this.setState({ value: this.state.value + 1 })}
-        onDecrement={() => this.setState({ value: this.state.value - 1 })}
+        increment={() => this.setState({ value: this.state.value + 1 })}
+        decrement={() => this.setState({ value: this.state.value - 1 })}
       />
     );
   }

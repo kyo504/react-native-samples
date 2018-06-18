@@ -31,6 +31,7 @@ const list = [
   'NetInfoExample',
   'GalleryApp',
   'Counter',
+  'CounterRedux',
 ];
 
 export default class HomeScreen extends React.Component {

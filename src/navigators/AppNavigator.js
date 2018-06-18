@@ -30,6 +30,7 @@ import AppStateExample from '../screens/AppStateExample';
 import NetInfoExample from '../screens/NetInfoExample';
 import GalleryNavigator from './GalleryNavigator';
 import CounterExample from '../screens/CounterExample';
+import CounterReduxExample from '../screens/CounterReduxExample';
 
 export default StackNavigator(
   {
@@ -191,6 +192,9 @@ export default StackNavigator(
     },
     Counter: {
       screen: CounterExample,
+    },
+    CounterRedux: {
+      screen: CounterReduxExample,
     },
   },
   {

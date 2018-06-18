@@ -3,18 +3,18 @@ import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 
 export default class Counter extends Component {
   render() {
-    const { onIncrement, onDecrement, value } = this.props;
+    const { increment, decrement, value } = this.props;
 
     return (
       <View style={styles.container}>
         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{value}</Text>
         <View style={{ flexDirection: 'row' }}>
-          <TouchableHighlight onPress={onIncrement}>
+          <TouchableHighlight onPress={increment}>
             <View style={{ width: 20, borderWidth: 1, borderColor: 'black' }}>
               <Text style={{ textAlign: 'center' }}>+</Text>
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={onDecrement}>
+          <TouchableHighlight onPress={decrement}>
             <View style={{ width: 20, borderWidth: 1, borderColor: 'black' }}>
               <Text style={{ textAlign: 'center' }}>-</Text>
             </View>
