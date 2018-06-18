@@ -60,7 +60,7 @@ class GridView extends Component {
         borderWidth: 2,
       };
     }
-    
+
     return (
       <TouchableOpacity
         style={[StyleSheet.absoluteFill, { alignItems: 'flex-end' }, overlayStyle]}
@@ -95,14 +95,7 @@ class GridView extends Component {
     }
 
     return (
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: 40,
-          backgroundColor: 'lightgray',
-        }}
-      >
+      <View style={styles.footerContainer}>
         <ActivityIndicator />
       </View>
     );
@@ -144,6 +137,12 @@ const styles = StyleSheet.create({
     height: IMAGE_WIDTH,
     borderColor: 'white',
     borderWidth: 1,
+  },
+  footerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 40,
+    backgroundColor: 'lightgray',
   },
 });
 
