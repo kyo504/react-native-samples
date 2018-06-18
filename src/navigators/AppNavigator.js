@@ -28,6 +28,7 @@ import DimensionsBasis from '../screens/DimensionsBasics';
 import ModalBasics from '../screens/ModalBasics';
 import AppStateExample from '../screens/AppStateExample';
 import NetInfoExample from '../screens/NetInfoExample';
+import GalleryNavigator from './GalleryNavigator';
 
 export default StackNavigator(
   {
@@ -179,6 +180,12 @@ export default StackNavigator(
       screen: NetInfoExample,
       navigationOptions: {
         headerTitle: 'NetInfoExample',
+      },
+    },
+    GalleryApp: {
+      screen: GalleryNavigator,
+      navigationOptions: {
+        header: null,
       },
     },
   },

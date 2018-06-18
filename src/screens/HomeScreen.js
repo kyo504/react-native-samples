@@ -29,6 +29,7 @@ const list = [
   'ModalBasics',
   'AppStateExample',
   'NetInfoExample',
+  'GalleryApp',
 ];
 
 export default class HomeScreen extends React.Component {
