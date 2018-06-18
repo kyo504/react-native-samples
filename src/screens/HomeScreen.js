@@ -21,6 +21,7 @@ const list = [
   'ScrollViewBasics',
   'TodoApp',
   'TodoApp2',
+  'TodoRedux',
   'FlatListBasics',
   'SectionListBasics',
   'ImageBasics',

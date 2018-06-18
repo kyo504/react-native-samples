@@ -31,6 +31,7 @@ import NetInfoExample from '../screens/NetInfoExample';
 import GalleryNavigator from './GalleryNavigator';
 import CounterExample from '../screens/CounterExample';
 import CounterReduxExample from '../screens/CounterReduxExample';
+import TodoReduxExample from '../screens/TodoReduxExample';
 
 export default StackNavigator(
   {
@@ -195,6 +196,9 @@ export default StackNavigator(
     },
     CounterRedux: {
       screen: CounterReduxExample,
+    },
+    TodoRedux: {
+      screen: TodoReduxExample,
     },
   },
   {
