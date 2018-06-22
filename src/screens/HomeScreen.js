@@ -33,6 +33,7 @@ const list = [
   'GalleryApp',
   'Counter',
   'CounterRedux',
+  'CounterRedux2',
 ];
 
 export default class HomeScreen extends React.Component {
