@@ -33,6 +33,26 @@ import CounterExample from '../screens/CounterExample';
 import CounterReduxExample from '../screens/CounterReduxExample';
 import CounterReduxExample2 from '../screens/CounterReduxExample2';
 import TodoReduxExample from '../screens/TodoReduxExample';
+import LayoutAnimation1 from '../screens/LayoutAnimation1';
+import LayoutAnimation2 from '../screens/LayoutAnimation2';
+import LayoutAnimation3 from '../screens/LayoutAnimation3';
+import BounceAnimation from '../screens/BounceAnimation';
+import ChasingAnimation from '../screens/ChasingAnimation';
+import CompositeAnimation from '../screens/CompositeAnimation';
+import DecayAnimation from '../screens/DecayAnimation';
+import DragAnimation from '../screens/DragAnimation';
+import EasingAnimation from '../screens/EasingAnimation';
+import LayoutEventAnimation from '../screens/LayoutEventAnimation';
+import MarqueeTextSample from '../screens/MarqueeTextSample';
+import PagingAnimation from '../screens/PagingAnimation';
+import PanResponderExample from '../screens/PanResponderExample';
+import ParallelAnimation from '../screens/ParallelAnimation';
+import SequenceAnimation from '../screens/SequenceAnimation';
+import SpinningAnimation from '../screens/SpinningAnimation';
+import SpringAnimation from '../screens/SpringAnimation';
+import StaggerAnimation from '../screens/StaggerAnimation';
+import TimingAnimation from '../screens/TimingAnimation';
+import TinderAnimation from '../screens/TinderAnimation';
 
 export default StackNavigator(
   {
@@ -204,6 +224,26 @@ export default StackNavigator(
     TodoRedux: {
       screen: TodoReduxExample,
     },
+    LayoutAnimation1: LayoutAnimation1,
+    LayoutAnimation2: LayoutAnimation2,
+    LayoutAnimation3: LayoutAnimation3,
+    BounceAnimation: BounceAnimation,
+    ChasingAnimation: ChasingAnimation,
+    CompositeAnimation: CompositeAnimation,
+    DecayAnimation: DecayAnimation,
+    DragAnimation: DragAnimation,
+    EasingAnimation: EasingAnimation,
+    LayoutEventAnimation: LayoutEventAnimation,
+    MarqueeTextSample: MarqueeTextSample,
+    PagingAnimation: PagingAnimation,
+    PanResponderExample: PanResponderExample,
+    ParallelAnimation: ParallelAnimation,
+    SequenceAnimation: SequenceAnimation,
+    SpinningAnimation: SpinningAnimation,
+    SpringAnimation: SpringAnimation,
+    StaggerAnimation: StaggerAnimation,
+    TimingAnimation: TimingAnimation,
+    TinderAnimation: TinderAnimation,
   },
   {
     initialRouteName: 'Home',
