@@ -3,15 +3,24 @@
  */
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import AppNavigator from './src/navigators/AppNavigator';
-import store from './src/store/configureStore';
+import configureStore from './src/store/configureStore';
+
+const { persistor, store } = configureStore();
+
+const onBeforeLift = () => {
+  // take some action before the gate lifts
+};
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppNavigator />
+        <PersistGate loading={null} onBeforeLift={onBeforeLift} persistor={persistor}>
+          <AppNavigator />
+        </PersistGate>
       </Provider>
     );
   }
