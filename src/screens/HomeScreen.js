@@ -54,6 +54,7 @@ const list = [
   'StaggerAnimation',
   'TimingAnimation',
   'TinderAnimation',
+  'NativeModule',
 ];
 
 export default class HomeScreen extends React.Component {

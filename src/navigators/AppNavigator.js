@@ -53,6 +53,7 @@ import SpringAnimation from '../screens/SpringAnimation';
 import StaggerAnimation from '../screens/StaggerAnimation';
 import TimingAnimation from '../screens/TimingAnimation';
 import TinderAnimation from '../screens/TinderAnimation';
+import NativeModuleExample from '../screens/NativeModuleExample';
 
 export default StackNavigator(
   {
@@ -244,6 +245,7 @@ export default StackNavigator(
     StaggerAnimation: StaggerAnimation,
     TimingAnimation: TimingAnimation,
     TinderAnimation: TinderAnimation,
+    NativeModule: NativeModuleExample,
   },
   {
     initialRouteName: 'Home',
