@@ -50,7 +50,7 @@ RCT_EXPORT_METHOD(getDeviceName: (RCTResponseSenderBlock)callback)
 
 RCT_EXPORT_METHOD(sendUserName)
 {
-  [self sendEventWithName:@"onReceived" body:@{@"name": @"Daniel Jung"}];
+  [self sendEventWithName:@"onReceived" body:@{@"userName": @"Daniel Jung"}];
 }
 
 //exports a method getPlatformName to javascript

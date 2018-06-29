@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { NativeEventEmitter, Text, TouchableHighlight, View } from 'react-native';
+import { Platform, DeviceEventEmitter, NativeEventEmitter, Text, TouchableHighlight, View } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 
 import NativeInfo from '../nativeModules';
 
-const eventEmitter = new NativeEventEmitter(NativeInfo);
+const eventEmitter = Platform.select({
+  ios: new NativeEventEmitter(NativeInfo),
+  android: DeviceEventEmitter,
+});
 
 export default class ModalBasics extends Component {
 
@@ -30,8 +33,8 @@ export default class ModalBasics extends Component {
     this.listener.remove();
   }
 
-  onReceived = ({ name }) => {
-    this.setState({ userName: name })
+  onReceived = ({ userName }) => {
+    this.setState({ userName })
   }
 
   getPlatform = async () => {
