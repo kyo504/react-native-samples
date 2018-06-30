@@ -4,7 +4,7 @@
  * https://github.com/facebook/react-native/blob/90eaeb019b2056150cae541a59720daad21466ef/RNTester/js/LayoutEventsExample.js
  */
 import React from 'react';
-import { View, Text, StyleSheet, LayoutAnimation, Image } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, LayoutAnimation, Image } from 'react-native';
 
 export default class LayoutEventAnimation extends React.Component {
   state: State = {
@@ -14,58 +14,59 @@ export default class LayoutEventAnimation extends React.Component {
   };
 
   animateViewLayout = () => {
-
     const config = {
       ...LayoutAnimation.Presets.easeInEaseOut,
-    }
+    };
     const onAnimationDidEnd = () => {
       console.log('layout animation done.');
       this.addWrapText();
-    }
+    };
 
     LayoutAnimation.configureNext(config, onAnimationDidEnd);
 
     this.setState({
       viewStyle: {
         margin: this.state.viewStyle.margin > 20 ? 20 : 100,
-      }
+      },
     });
   };
 
   addWrapText = () => {
     this.setState(
-      {extraText: '  And a bunch more text to wrap around a few lines.'},
+      { extraText: '  And a bunch more text to wrap around a few lines.' },
       this.changeContainer
     );
   };
 
   changeContainer = () => {
-    this.setState({containerStyle: {width: 280, borderColor: 'green', borderWidth: 1}});
+    this.setState({ containerStyle: { width: 280, borderColor: 'green', borderWidth: 1 } });
   };
 
   onViewLayout = (e: ViewLayoutEvent) => {
     console.log('received view layout event\n', e.nativeEvent);
-    this.setState({viewLayout: e.nativeEvent.layout});
+    this.setState({ viewLayout: e.nativeEvent.layout });
   };
 
   onTextLayout = (e: ViewLayoutEvent) => {
     console.log('received text layout event\n', e.nativeEvent);
-    this.setState({textLayout: e.nativeEvent.layout});
+    this.setState({ textLayout: e.nativeEvent.layout });
   };
 
   onImageLayout = (e: ViewLayoutEvent) => {
     console.log('received image layout event\n', e.nativeEvent);
-    this.setState({imageLayout: e.nativeEvent.layout});
+    this.setState({ imageLayout: e.nativeEvent.layout });
   };
 
   render() {
     var viewStyle = [styles.view, this.state.viewStyle];
-    var textLayout = this.state.textLayout || {width: '?', height: '?'};
-    var imageLayout = this.state.imageLayout || {x: '?', y: '?'};
+    var textLayout = this.state.textLayout || { width: '?', height: '?' };
+    var imageLayout = this.state.imageLayout || { x: '?', y: '?' };
     return (
-      <View style={this.state.containerStyle}>
+      <ScrollView style={this.state.containerStyle}>
         <Text>
-          layout events are called on mount and whenever layout is recalculated. Note that the layout event will typically be received <Text style={styles.italicText}>before</Text> the layout has updated on screen, especially when using layout animations.{'  '}
+          layout events are called on mount and whenever layout is recalculated. Note that the
+          layout event will typically be received <Text style={styles.italicText}>before</Text> the
+          layout has updated on screen, especially when using layout animations.{'  '}
           <Text style={styles.pressText} onPress={this.animateViewLayout}>
             Press here to change layout.
           </Text>
@@ -75,11 +76,9 @@ export default class LayoutEventAnimation extends React.Component {
             ref="img"
             onLayout={this.onImageLayout}
             style={styles.image}
-            source={{uri: 'https://unsplash.it/200/200'}}
+            source={{ uri: 'https://unsplash.it/200/200' }}
           />
-          <Text>
-            ViewLayout: {JSON.stringify(this.state.viewLayout, null, '  ') + '\n\n'}
-          </Text>
+          <Text>ViewLayout: {JSON.stringify(this.state.viewLayout, null, '  ') + '\n\n'}</Text>
           <Text ref="txt" onLayout={this.onTextLayout} style={styles.text}>
             A simple piece of text.{this.state.extraText}
           </Text>
@@ -89,7 +88,7 @@ export default class LayoutEventAnimation extends React.Component {
             Image x/y: {imageLayout.x}/{imageLayout.y}
           </Text>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
