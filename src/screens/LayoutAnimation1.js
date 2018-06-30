@@ -18,19 +18,19 @@ export default class LayoutAnimationExample1 extends Component {
   }
 
   _onPressAddView = () => {
-    this.setState((state) => ({views: [...state.views, {}]}));
+    this.setState(state => ({ views: [...state.views, {}] }));
   };
 
   _onPressRemoveView = () => {
-    this.setState((state) => ({views: state.views.slice(0, -1)}));
+    this.setState(state => ({ views: state.views.slice(0, -1) }));
   };
 
   render() {
-    const views = this.state.views.map((view, i) =>
+    const views = this.state.views.map((view, i) => (
       <View key={i} style={styles.view}>
         <Text>{i}</Text>
       </View>
-    );
+    ));
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this._onPressAddView}>
@@ -43,9 +43,7 @@ export default class LayoutAnimationExample1 extends Component {
             <Text>Remove view</Text>
           </View>
         </TouchableOpacity>
-        <View style={styles.viewContainer}>
-          {views}
-        </View>
+        <View style={styles.viewContainer}>{views}</View>
       </View>
     );
   }
@@ -76,6 +74,5 @@ const styles = StyleSheet.create({
     margin: 8,
     alignItems: 'center',
     justifyContent: 'center',
-  },  
+  },
 });
-

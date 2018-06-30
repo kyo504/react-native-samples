@@ -16,7 +16,6 @@ const BlueSquare = () =>
   <Text>Blue square</Text>
 </View>;
 
-
 export default class LayoutAnimationExample2 extends Component {
   state = {
     toggled: false,
