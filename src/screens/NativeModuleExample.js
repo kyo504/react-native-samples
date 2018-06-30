@@ -58,6 +58,9 @@ export default class ModalBasics extends Component {
       <SafeAreaView style={{ flex: 1 }} forceInset={{ top: 'always', bottom: 'never' }}>
         <View style={{ flex: 1 }}>
           <Text>Platform Name: {platformName}</Text>
+          <Text>IDE Version: {NativeInfo.IDE_VERSION}</Text>
+          <Text>App Version: {NativeInfo.APP_VERSION}</Text>
+          <Text>Module Name: {NativeInfo.MODULE_NAME}</Text>
           <Text>Device Name: {deviceName}</Text>
           <Text>User Name: {userName}</Text>
         </View>

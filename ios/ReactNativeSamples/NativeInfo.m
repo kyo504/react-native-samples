@@ -18,7 +18,9 @@ RCT_EXPORT_MODULE();
 
 - (NSDictionary *)constantsToExport
 {
-  return @{ @"firstDayOfTheWeek": @"Monday" };
+  return @{ @"IDE_VERSION": @"9.4",
+            @"APP_VERSION": @"1.0",
+            @"MODULE_NAME": @"NativeInfoIOS" };
 }
 
 - (NSArray<NSString *> *)supportedEvents

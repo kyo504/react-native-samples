@@ -38,8 +38,9 @@ public class NativeInfo extends ReactContextBaseJavaModule {
     @Override
     public Map<String, Object> getConstants() {
         final Map<String, Object> constants = new HashMap<>();
-//        constants.put(DURATION_SHORT_KEY, Toast.LENGTH_SHORT);
-//        constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);
+        constants.putString("IDE_VERSION", "3.14.0");
+        constants.putString("APP_VERSION", "1.36.3");
+        constants.putString("MODULE_NAME", "NativeInfoAndroid");
         return constants;
     }
 
